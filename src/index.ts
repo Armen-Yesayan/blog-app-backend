@@ -9,6 +9,7 @@ import authRoutes from "./modules/auth/auth.routes";
 import {errorHandler} from "./common/middlewares/error.middleware";
 import {sequelize} from "./common/configs/db.config";
 import path from "path";
+import fs from "fs";
 
 dotenv.config();
 
@@ -33,6 +34,10 @@ app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 sequelize
     .sync()
     .then(() => {
+        const uploadPath = path.join(__dirname, '..', 'uploads');
+        if (!fs.existsSync(uploadPath)) {
+            fs.mkdirSync(uploadPath);
+        }
         app.listen(PORT, () => {
             console.log(`Server running on http://localhost:${PORT}`);
         });
