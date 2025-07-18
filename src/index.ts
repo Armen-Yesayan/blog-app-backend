@@ -13,7 +13,7 @@ import path from "path";
 dotenv.config();
 
 const corsOptions: CorsOptions = {
-    origin: 'http://localhost:3000',
+    origin: ['http://localhost:3000', 'https://blog-app-frontend-green.vercel.app/'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 };
