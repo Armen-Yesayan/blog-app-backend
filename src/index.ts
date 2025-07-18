@@ -10,7 +10,6 @@ import {errorHandler} from "./common/middlewares/error.middleware";
 import {sequelize} from "./common/configs/db.config";
 import path from "path";
 import fs from 'fs';
-import * as process from "node:process";
 
 dotenv.config();
 
