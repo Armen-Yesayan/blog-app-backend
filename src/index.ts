@@ -10,11 +10,12 @@ import {errorHandler} from "./common/middlewares/error.middleware";
 import {sequelize} from "./common/configs/db.config";
 import path from "path";
 import fs from 'fs';
+import * as process from "node:process";
 
 dotenv.config();
 
 const corsOptions: CorsOptions = {
-    origin: 'http://localhost:3000',
+    origin: process.env.CLIENT_URL || 'http://localhost:3000',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
