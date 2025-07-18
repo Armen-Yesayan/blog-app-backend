@@ -29,15 +29,11 @@ app.use('/api/posts', postRoutes);
 app.use('/api/auth', authRoutes);
 app.use(errorHandler);
 
-app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
+app.use('/uploads', express.static(path.join(__dirname, 'src', 'uploads')));
 
 sequelize
     .sync()
     .then(() => {
-        const uploadPath = path.join(__dirname, '..', 'uploads');
-        if (!fs.existsSync(uploadPath)) {
-            fs.mkdirSync(uploadPath);
-        }
         app.listen(PORT, () => {
             console.log(`Server running on http://localhost:${PORT}`);
         });
