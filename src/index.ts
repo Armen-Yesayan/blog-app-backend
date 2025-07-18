@@ -9,7 +9,6 @@ import authRoutes from "./modules/auth/auth.routes";
 import {errorHandler} from "./common/middlewares/error.middleware";
 import {sequelize} from "./common/configs/db.config";
 import path from "path";
-import fs from "fs";
 
 dotenv.config();
 
