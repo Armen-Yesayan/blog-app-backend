@@ -1,11 +1,12 @@
 import {AuthRequest} from "../../modules/posts/post.controller";
+import path from "path";
 
 export function getImagePath(req: AuthRequest): string | undefined {
     if (!req.file) return undefined;
 
-    const cleanedPath = req.file.path
-        .replace(/^src[\\/]/, '')
-        .replace(/\\/g, '/');
+    const fileName = path.basename(req.file.path);
 
-    return `${req.protocol}://${req.get('host')}/${cleanedPath}`;
+    const imagePath = `uploads/${fileName}`;
+
+    return `${req.protocol}://${req.get("host")}/${imagePath}`;
 }
